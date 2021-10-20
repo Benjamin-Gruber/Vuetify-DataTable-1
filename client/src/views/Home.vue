@@ -1,18 +1,28 @@
 <template>
   <v-main>
     <v-container class="d-flex justify-center">
-      <v-alert width="1050" color="grey lighten-4"
-        ><span class="font-weight-medium">Rent selected movies:</span></v-alert
+      <v-alert width="1050" color="blue-grey darken-1"
+        ><span class="font-weight-medium white--text"
+          >Rent selected movies: {{ selected.map((el) => el.title).join(', ') }}</span
+        ></v-alert
       >
     </v-container>
     <v-container>
-      <v-data-table
-        :headers="headers"
-        :items="movies"
-        show-select
-        :items-per-page="10"
-        class="elevation-1"
-      ></v-data-table>
+      <v-card>
+        <v-card-title>
+          <v-text-field v-model="search" label="Search" single-line hide-details></v-text-field>
+        </v-card-title>
+        <v-data-table
+          v-model="selected"
+          :search="search"
+          :headers="headers"
+          :items="movies"
+          show-select
+          :items-per-page="6"
+          :footer-props="{ itemsPerPageOptions: [6, 12, 18] }"
+          class="elevation-1"
+        ></v-data-table
+      ></v-card>
     </v-container>
   </v-main>
 </template>
@@ -31,29 +41,36 @@ export default {
 
   data() {
     return {
+      selected: [],
+      search: '',
       movies: [],
       headers: [
         {
           text: 'Title',
           value: 'title',
+          class: 'blue-grey lighten-5',
         },
         {
           text: 'Director',
           value: 'director',
+          class: 'blue-grey lighten-5',
         },
         {
           text: 'Genre',
           value: 'main_genre',
+          class: 'blue-grey lighten-5',
         },
         {
           text: 'Year',
           value: 'year',
           width: 100,
+          class: 'blue-grey lighten-5',
         },
         {
           text: 'Rated',
           value: 'rated',
           width: 100,
+          class: 'blue-grey lighten-5',
         },
         {
           text: 'Plot',

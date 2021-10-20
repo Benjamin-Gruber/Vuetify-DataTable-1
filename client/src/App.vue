@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <img src="logo.png" width="100" class="mt-10 img" />
+      <img src="logo.png" width="100" class="mt-10 img d-none d-md-inline" />
       <span class="text-h4">Movies</span>
       <v-spacer></v-spacer>
       <v-btn depressed href="https://www.imdb.com/movies-in-theaters/" style="text-decoration: none "
